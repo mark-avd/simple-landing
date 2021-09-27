@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import 'crousel';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F8F3FF;
+    color: #303030;
+
+}
+
+h1 {
+    font-weight: 800;
+    line-height: 72px;
+    font-size: 56px;
+}
+
+h2 {
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 72px;
+}
+
+h3 {
+    font-weight: 800;
+    font-size: 27px;
+    line-height: 36px;
+}
+
+.vector {
+    position: absolute;
+}
+
+// HEADER ----------------
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 0;
+    a {
+        color: #8E43ED;
+        text-decoration: none;
+        padding: 0 32px;
+    }
+}
+
+.header__vectors {
+    margin-left: 64px;
+}
+
+.header__links {
+    margin-right: 144px;
+}
+
+// MAIN ----------------
+#main {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 220px 0;
+
+    @media screen and (max-width: 1100px){
+        flex-direction: column;
+        align-items: baseline;
+        padding-bottom: 60px;
+    }
+
+    .photo {
+        border-radius: 32px;
+
+    }
+}
+
+.info__photo {
+    position: relative;
+    margin: 100px 0 100px 64px;
+}
+
+.info__container {
+    margin: 0 176px 0 32px;
+
+    h1, h3 {
+        margin-bottom: 24px;
+    }
+}
+
+.info__main {
+    margin-bottom: 64px;
+    p {
+        display: inline-block;
+        margin-right: 8px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 21px;
+    }
+    span {
+        color: #AA7ECD;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+    }
+}
+
+.info__about {
+    p {
+        color: #000;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 178%;
+    }
+}
+
+.vector__main--s {
+    left: -57px;
+    bottom: 105px;
+}
+
+.vector__main--m {
+    left: -64px;
+    bottom: -55px;
+}
+
+// FORM ----------------
+
+#form {
+    position: relative;
+    h2 {
+        margin: 56px 0 20px 0;
+    }
+
+    label {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        display: inline-block;
+        margin: 20px 32px 20px 0;
+
+    }
+}
+
+input, select {
+    background: #FFFFFF;
+    border: 1px solid #D9BBFF;
+    border-radius: 12px;
+    font-size: 16px;
+    padding: 16px;
+
+    &:valid {
+        border: 1px solid #8E43ED;
+    }
+
+    &:invalid {
+        color: #9F9F9F;
+    }
+
+    &:focus:required {
+        outline: none;
+        border-color: #8E43ED;
+        box-shadow: 0 0 1px #8E43ED;
+    }
+
+}
+
+input[type=text], input[type=date], select {
+    width: 301px;
+}
+
+.form__main {
+    margin: 0 64px;
+}
+
+.form__fields {
+    display: flex;
+    flex-direction: column;
+}
+
+select {
+    color: gray;
+
+}
+
+.form__dropzone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+
+    background: #FFFFFF;
+    border: 1px dashed #D9BBFF;
+    box-sizing: border-box;
+    border-radius: 12px;
+    max-width: 976px;
+
+    span {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #9993BD;
+        margin: 0 16px;
+    }
+
+}
+
+.form__files {
+    display: flex;
+    margin-top: 8px;
+}
+
+.form__filePreview {
+    display: flex;
+    justify-content: space-between;
+    width: 256px;
+    background: #FFFFFF;
+    border: 1px solid #D9BBFF;
+    border-radius: 12px;
+    padding-right: 17px;
+}
+
+.filePreview__container {
+    display: flex;
+    align-items: center;
+}
+
+.filePreview__thumbnail {
+    object-fit: cover;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 8px 8px 8px 12px;
+}
+
+.filePreview__name {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.filePreview__details {
+    font-size: 12px;
+    line-height: 18px;
+    color: #AFAFAF;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.fileInput {
+    display: none;
+}
+
+.btn {
+    background-color: #8E43ED;
+    border: 1px solid #8E43ED;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+
+    width: 211px;
+    height: 56px;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+
+    &:active {
+        background-color: #500AA9;
+        border-color: #500AA9;
+    }
+
+    &:hover {
+        background-color: #6813D3;
+        border-color: #6813D3;
+    }
+
+    &:disabled {
+        background-color: #DED9E4;
+        border-color: #DED9E4;
+        cursor: auto;
+    }
+}
+
+.secondary {
+    color: #8E43ED;
+    background-color: #fff;
+
+    &:active {
+        background-color: #F0E5FE;
+    }
+
+    &:hover {
+        background-color: #FAF8FE;
+        border-color: #6813D3;
+    }
+
+    &:disabled {
+        background-color: #fff;
+        border-color: #D9BBFF;
+        color: #D9BBFF;
+        cursor: auto;
+    }
+
+}
+
+.btn--send {
+    margin: 48px 0 48px 0;
+}
+
+.btn--add {
+    margin: 24px 0;
+}
+
+.vector__form{
+    z-index: -1;
+    @media screen and (max-width: 700px){
+        display: none;
+    }
+}
+
+.vector__form--m {
+    top: 56 - 71px;
+    left: -50 + 48px;
+}
+
+.vector__form--s {
+    top: 189 - 71px;
+    left: 173px;
+}
+
+.vector__form--b {
+    top: 327 - 71px;
+    left: -100 + 100px;
+}
+
+.vector__form--mc {
+    top: 47 - 71px;
+    right: -50 + 48px;
+}
+
+.vector__form--sc {
+    top: 165 - 71px;
+    right: 173px;
+}
+
+.vector__form--bc {
+    top: 303 - 71px;
+    right: 100 - 100px;
+
+}
+
+// SLIDER ----------------
+
+#slider {
+    background-color: #fff;
+}
+
+.slider__wrapper {
+    position: relative;
+    margin: auto;
+    max-width: 90%;
+    overflow: hidden;
+    border-radius: 32px;
+}
+
+.slider__line {
+    display: flex;
+    transition: all ease 1s;
+    border-radius: 32px;
+    img {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+        border-radius: 32px;
+    }
+}
+
+.slider--prev, .slider--next {
+    position: absolute;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    top: 250px;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    &:hover {
+        border-color: rgba(0,0,0,0.8);
+    }
+}
+
+.slider--next {
+    right: 0;
+}

@@ -1,0 +1,9 @@
+.slider__container {
+  display: flex;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  border-radius: 32px;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+  }
+}

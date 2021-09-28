@@ -36,6 +36,14 @@ h3 {
     position: absolute;
 }
 
+.none {
+    display: none;
+}
+
+.hide {
+    visibility: hidden;
+}
+
 // HEADER ----------------
 
 .header {
@@ -58,12 +66,26 @@ h3 {
     margin-right: 144px;
 }
 
+@media screen and (max-width: 850px){
+    .header {
+        justify-content: center;
+    }
+
+    .header__links {
+        display: none;
+    }
+
+    .header__vectors {
+        margin: auto;
+    }
+}
+
 // MAIN ----------------
+
 #main {
     display: flex;
     align-items: center;
     background-color: #fff;
-    border-radius: 220px 0;
 
     @media screen and (max-width: 1100px){
         flex-direction: column;
@@ -83,7 +105,7 @@ h3 {
 }
 
 .info__container {
-    margin: 0 176px 0 32px;
+    margin: 16px 14px;
 
     h1, h3 {
         margin-bottom: 24px;
@@ -151,15 +173,11 @@ input, select {
     font-size: 16px;
     padding: 16px;
 
-    &:valid {
-        border: 1px solid #8E43ED;
-    }
-
     &:invalid {
         color: #9F9F9F;
     }
 
-    &:focus:required {
+    &:focus {
         outline: none;
         border-color: #8E43ED;
         box-shadow: 0 0 1px #8E43ED;
@@ -186,6 +204,7 @@ select {
 }
 
 .form__dropzone {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -246,12 +265,27 @@ select {
     color: #AFAFAF;
 }
 
-.hide {
-    visibility: hidden;
-}
-
 .fileInput {
     display: none;
+}
+
+label {
+    position: relative;
+}
+
+.error__message {
+    position: absolute;
+    color: #ED4376;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+    left: 8px;
+    bottom: -20px;
+}
+
+.error__input, .error__input__select {
+    background-color: #FFF5F5;
+    border: 1px solid #ED4376;
 }
 
 .btn {
@@ -282,6 +316,34 @@ select {
         background-color: #DED9E4;
         border-color: #DED9E4;
         cursor: auto;
+    }
+}
+
+.form__button {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form__completed {
+    display: flex;
+    align-items: center;
+    margin: 24px;
+
+    p {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        margin: auto 8px;
+    }
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        color: #3DD73A;
+        border-radius: 50%;
+        background-color: #E1FEE8;
     }
 }
 
@@ -357,11 +419,13 @@ select {
 
 #slider {
     background-color: #fff;
+
 }
 
 .slider__wrapper {
     position: relative;
     margin: auto;
+    padding: 56px 0;
     max-width: 90%;
     overflow: hidden;
     border-radius: 32px;

@@ -1,12 +1,81 @@
 import './styles.scss'
 
+// VALIDATION ----------
+
+const form = document.querySelector('.form__main')
+const genderSelect = document.querySelector('#gender')
+const dropZone = document.querySelector('.form__dropzone')
+const formFiles = document.querySelector('.form__files')
+const filePreview = document.querySelector('.form__filePreview')
+const sendButton = document.querySelector('.btn--send')
+const formSend = document.querySelector('.form__completed')
+const regExp = /^[a-zA-Z\s]*$/
+let isValidated = false
+
+const validateElem = (elem) => {
+
+    if (elem.name === 'name' || elem.name === 'country' || elem.name === 'city') {
+        if (!regExp.test(elem.value)) {
+            elem.nextElementSibling.textContent = 'Only latin letters and spaces allowed'
+            elem.classList.add('error__input')
+            isValidated = false
+        } else {
+            elem.nextElementSibling.textContent = ''
+            elem.classList.remove('error__input')
+            isValidated = true
+        }
+    }
+}
+
+const submit = () => {
+    form.reset()
+    formFiles.removeChild(filePreview)
+    sendButton.disabled = true
+    formSend.classList.remove('hide')
+}
+
+for (let elem of form.elements) {
+    if (elem.tagName !== 'BUTTON') {
+        elem.addEventListener('blur', () => validateElem(elem))
+    }
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    for (let elem of form.elements) {
+        if (elem.tagName !== 'BUTTON') {
+            if (elem.name === 'gender') {
+                elem.value === 'default' ?
+                    genderSelect.classList.add('error__input__select')
+                    :
+                    genderSelect.classList.remove('error__input__select')
+            }
+
+            if (elem.value === '') {
+                elem.nextElementSibling.textContent = 'Field required'
+                elem.classList.add('error__input')
+                elem.name === 'file' && dropZone.classList.add('error__input')
+                isValidated = false
+            } else {
+                elem.nextElementSibling.textContent = ''
+                elem.classList.remove('error__input')
+                elem.name === 'file' && dropZone.classList.remove('error__input')
+                isValidated = true
+            }
+        }
+    }
+    if (isValidated) {
+        submit()
+    }
+})
+
+
 // FILE INPUT ----------
 
 const dropContainer = document.querySelector('.form__dropzone')
 const fileInput = document.querySelector('.fileInput')
 const fileName = document.querySelector('.filePreview__name')
 const fileDetails = document.querySelector('.filePreview__details')
-const filePreview = document.querySelector('.form__filePreview')
 const fileThumbnail = document.querySelector('.filePreview__thumbnail')
 const addButton = document.querySelector('.btn--add')
 const trashBin = document.querySelector('.filePreview__bin')
@@ -91,5 +160,3 @@ document.querySelector('.slider--next').addEventListener('click', () => {
 function moveSlider() {
     sliderLine.style.transform = 'translate(-' + count * width + 'px)'
 }
-
-

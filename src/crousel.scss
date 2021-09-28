@@ -1,9 +1,32 @@
-.slider__container {
-  display: flex;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
-  border-radius: 32px;
-  overflow: hidden;
-  img {
-    object-fit: cover;
+@media screen and (min-width: 500px){
+  #main {
+    border-radius: 220px 0;
+  }
+
+  .info__container {
+    margin: 0 176px 0 32px;
+  }
+
+}
+
+@media screen and (max-width: 500px){
+  .info__photo {
+    margin: 24px auto;
+  }
+
+  .photo {
+    width: 348px;
+  }
+
+  .vector__main--m {
+    display: none;
+  }
+
+  .vector__main--s {
+    display: none;
+  }
+
+  .info__container {
+
   }
 }

@@ -21,6 +21,7 @@
     <div id="main">
         <div class="info__photo">
             <img class="photo" src="assets/person-img.png" alt="Jane Doe Photo">
+            <img class="none" src="assets/mobile/m-slider-img-1.png" alt="Ocean Waves">
             <img class="vector vector__main--s" src="assets/graphics/photo-small.svg" alt="">
             <img class="vector vector__main--m" src="assets/graphics/photo.svg" alt="">
         </div>
@@ -47,56 +48,56 @@
         </div>
     </div>
     <div id="form">
-        <form class="form__main" action="#">
+        <form class="form__main" action="#" novalidate>
             <h2>Tell us about yourself</h2>
             <div class="form__fields">
                 <section>
                     <label for="name">
                         Your Name <br/>
                         <input
+                                name="name"
                                 type="text"
                                 id="name"
                                 placeholder="Tell us your name"
-                                minlength="4"
-                                maxlength="30"
-                                required />
+                        />
+                        <span class="error__message"></span>
                     </label>
                     <label for="gender">
                         Your Gender <br/>
-                        <select name="gender" id="gender" required>
+                        <select name="gender" id="gender">
                             <option value="default" selected disabled>Chose your gender</option>
                             <option value="female">Female</option>
                             <option value="male">Male</option>
                             <option value="attack-heli">Attack Helicopter</option>
                         </select>
+                        <span class="error__message"></span>
                     </label>
                 </section>
                 <section>
                     <label for="country">
                         Your Country <br/>
                         <input
+                                name="country"
                                 type="text"
                                 id="country"
                                 placeholder="Where are you from?"
-                                minlength="4"
-                                maxlength="20"
-                                required
                         />
+                        <span class="error__message"></span>
                     </label>
                     <label for="city">
                         Your City <br/>
                         <input
+                                name="city"
                                 type="text"
                                 id="city"
                                 placeholder="What town are you from?"
-                                minlength="4"
-                                maxlength="20"
-                                required
                         />
+                        <span class="error__message"></span>
                     </label>
                     <label for="bDate">
                         Your Date of Birth <br/>
-                        <input type="date" id="bDate" required />
+                        <input name="bDate" type="date" id="bDate" />
+                        <span class="error__message"></span>
                     </label>
                 </section>
                 <div class="form__dropzone">
@@ -107,8 +108,8 @@
                             class="fileInput"
                             name="file"
                             accept=".jpg, .png, .bmp, .jpeg"
-                            required
                     />
+                    <div class="error__message"></div>
                 </div>
                 <div class="form__files">
                     <div class="form__filePreview hide">
@@ -128,7 +129,14 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn--send" type="submit">Send Info</button>
+            <div class="form__button">
+                <button class="btn btn--send" type="submit" >Send Info</button>
+                <div class="form__completed hide">
+                    <span>✔</span>
+                    <p>Completed</p>
+                </div>
+            </div>
+
         </form>
         <img
                 class="vector vector__form vector__form--m"
@@ -167,13 +175,16 @@
                 <img src="assets/slider-img-1.png" alt="Ocean Waves">
                 <img src="assets/slider-img-2.png" alt="Forest">
                 <img src="assets/slider-img-3.png" alt="Mountains">
+                <img class="none" src="assets/mobile/m-slider-img-1.png" alt="Ocean Waves">
+                <img class="none" src="assets/mobile/m-slider-img-2.png" alt="Forest">
+                <img class="none" src="assets/mobile/m-slider-img-3.png" alt="Mountains">
             </div>
-            <span class="slider--prev">
-                    <img src="assets/graphics/left-arrow.svg" alt="left arrow icon">
-                </span>
-            <span class="slider--next">
-                    <img  src="assets/graphics/right-arrow.svg" alt="right arrow icon">
-                </span>
+            <a class="slider--prev">
+                <img src="assets/graphics/left-arrow.svg" alt="left arrow icon">
+            </a>
+            <a class="slider--next">
+                <img  src="assets/graphics/right-arrow.svg" alt="right arrow icon">
+            </a>
         </div>
     </div>
 </body>

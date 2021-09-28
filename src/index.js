@@ -36,9 +36,9 @@ const validateElem = (elem) => {
 const showSection = (elem) => {
     if (genderSelect.value !== 'default' && regExp.test(userName.value)) {
         section.classList.remove('hide')
-        if (regExp.test(userCity.value) && regExp.test(userCountry.value) && userBirthday.value !== '') {
+        if (userBirthday.value !== '' && regExp.test(userCity.value) && regExp.test(userCountry.value)) {
             dropZone.classList.remove('hide')
-            if (fileInput.value !== '') {
+            if (fileInput.files.length !== 0) {
                 sendButton.disabled = false
                 isValidated = true
             } else {
@@ -119,6 +119,8 @@ trashBin.onclick = () => {
     fileInput.value = ''
     fileThumbnail.src = ''
     filePreview.classList.toggle('hide')
+    isValidated = false
+    sendButton.disabled = true
 }
 
 const createFilePreview = (e) => {

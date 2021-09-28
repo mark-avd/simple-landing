@@ -3,6 +3,12 @@ import './styles.scss'
 // VALIDATION ----------
 
 const form = document.querySelector('.form__main')
+const userName = document.querySelector('#name')
+const userCity = document.querySelector('#city')
+const userCountry = document.querySelector('#country')
+const userBirthday = document.querySelector('#bDate')
+const section = document.querySelector('.section')
+const fileInput = document.querySelector('.fileInput')
 const genderSelect = document.querySelector('#gender')
 const dropZone = document.querySelector('.form__dropzone')
 const formFiles = document.querySelector('.form__files')
@@ -27,6 +33,22 @@ const validateElem = (elem) => {
     }
 }
 
+const showSection = () => {
+    if (genderSelect.value !== 'default' && userName.value !== '') {
+        section.classList.remove('hide')
+        if (userCity.value !== '' && userCountry.value !== '' && userBirthday.value !== '') {
+            dropZone.classList.remove('hide')
+            if (fileInput.value !== ''){
+                sendButton.disabled = false
+            }
+        } else {
+            dropZone.classList.add('hide')
+        }
+    } else {
+        section.classList.add('hide')
+    }
+}
+
 const submit = () => {
     form.reset()
     formFiles.removeChild(filePreview)
@@ -37,6 +59,7 @@ const submit = () => {
 for (let elem of form.elements) {
     if (elem.tagName !== 'BUTTON') {
         elem.addEventListener('blur', () => validateElem(elem))
+        elem.addEventListener('input', () => showSection(elem))
     }
 }
 
@@ -74,7 +97,6 @@ form.addEventListener('submit', (e) => {
 // FILE INPUT ----------
 
 const dropContainer = document.querySelector('.form__dropzone')
-const fileInput = document.querySelector('.fileInput')
 const fileName = document.querySelector('.filePreview__name')
 const fileDetails = document.querySelector('.filePreview__details')
 const fileThumbnail = document.querySelector('.filePreview__thumbnail')
@@ -133,7 +155,7 @@ const init = () => {
     width = document.querySelector('.slider__wrapper').offsetWidth
     sliderLine.style.width = width * images.length + 'px'
     images.forEach(item => {
-        item.style.width = width + 0.7 + 'px'
+        item.style.width = width + 'px'
         item.style.height = '535px'
     })
     moveSlider()

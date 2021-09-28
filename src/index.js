@@ -63,6 +63,7 @@ form.addEventListener('submit', (e) => {
                 isValidated = true
             }
         }
+        validateElem(e)
     }
     if (isValidated) {
         submit()
@@ -125,6 +126,9 @@ const createFilePreview = (e) => {
 
 const images = document.querySelectorAll('.slider__wrapper .slider__line img')
 const sliderLine = document.querySelector('.slider__line')
+const dot1 = document.querySelector('.dot1')
+const dot2 = document.querySelector('.dot2')
+const dot3 = document.querySelector('.dot3')
 let count = 0
 let width;
 

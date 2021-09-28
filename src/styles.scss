@@ -173,16 +173,15 @@ input, select {
     font-size: 16px;
     padding: 16px;
 
-    &:invalid {
-        color: #9F9F9F;
-    }
-
     &:focus {
         outline: none;
         border-color: #8E43ED;
         box-shadow: 0 0 1px #8E43ED;
     }
+}
 
+input[type=date] {
+    color: #9F9F9F;
 }
 
 input[type=text], input[type=date], select {
@@ -444,18 +443,49 @@ label {
 .slider--prev, .slider--next {
     position: absolute;
     cursor: pointer;
-    height: 30px;
-    width: 30px;
-    border: 1px solid black;
-    top: 250px;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    &:hover {
-        border-color: rgba(0,0,0,0.8);
-    }
+    top: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+
+}
+
+.slider--prev {
+    left: 32px;
 }
 
 .slider--next {
-    right: 0;
+    right: 16px;
+}
+
+.slider__controls {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider__dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #FFFFFF;
+    color: white;
+    cursor: pointer;
+    margin: 0 6px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.slider__text {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-shadow: 0 0 2px #000;
 }

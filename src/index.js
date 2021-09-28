@@ -33,18 +33,27 @@ const validateElem = (elem) => {
     }
 }
 
-const showSection = () => {
-    if (genderSelect.value !== 'default' && userName.value !== '') {
+const showSection = (elem) => {
+    if (genderSelect.value !== 'default' && regExp.test(userName.value)) {
         section.classList.remove('hide')
-        if (userCity.value !== '' && userCountry.value !== '' && userBirthday.value !== '') {
+        if (regExp.test(userCity.value) && regExp.test(userCountry.value) && userBirthday.value !== '') {
             dropZone.classList.remove('hide')
-            if (fileInput.value !== ''){
+            if (fileInput.value !== '') {
                 sendButton.disabled = false
+                isValidated = true
+            } else {
+                validateElem(elem)
+                sendButton.disabled = true
+                isValidated = false
             }
         } else {
+            validateElem(elem)
+            sendButton.disabled = true
             dropZone.classList.add('hide')
         }
     } else {
+        validateElem(elem)
+        sendButton.disabled = true
         section.classList.add('hide')
     }
 }
@@ -58,36 +67,18 @@ const submit = () => {
 
 for (let elem of form.elements) {
     if (elem.tagName !== 'BUTTON') {
-        elem.addEventListener('blur', () => validateElem(elem))
         elem.addEventListener('input', () => showSection(elem))
     }
 }
 
+window.addEventListener('keypress', (event) => {
+    if(event.key === 'Enter') {
+        event.preventDefault()
+    }
+})
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    for (let elem of form.elements) {
-        if (elem.tagName !== 'BUTTON') {
-            if (elem.name === 'gender') {
-                elem.value === 'default' ?
-                    genderSelect.classList.add('error__input__select')
-                    :
-                    genderSelect.classList.remove('error__input__select')
-            }
-
-            if (elem.value === '') {
-                elem.nextElementSibling.textContent = 'Field required'
-                elem.classList.add('error__input')
-                elem.name === 'file' && dropZone.classList.add('error__input')
-                isValidated = false
-            } else {
-                elem.nextElementSibling.textContent = ''
-                elem.classList.remove('error__input')
-                elem.name === 'file' && dropZone.classList.remove('error__input')
-                isValidated = true
-            }
-        }
-        validateElem(e)
-    }
     if (isValidated) {
         submit()
     }

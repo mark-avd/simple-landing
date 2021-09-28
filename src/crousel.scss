@@ -7,12 +7,14 @@
     margin: 0 176px 0 32px;
   }
 
+  .info__photo {
+    margin: 100px 0 100px 64px;
+  }
+
 }
 
 @media screen and (max-width: 500px){
-  .info__photo {
-    margin: 24px auto;
-  }
+
 
   .photo {
     width: 348px;

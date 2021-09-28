@@ -124,11 +124,8 @@ const createFilePreview = (e) => {
 
 // SLIDER --------------
 
-const images = document.querySelectorAll('.slider__wrapper .slider__line img')
+const images = document.querySelectorAll('.slider__wrapper .slider__line .slide')
 const sliderLine = document.querySelector('.slider__line')
-const dot1 = document.querySelector('.dot1')
-const dot2 = document.querySelector('.dot2')
-const dot3 = document.querySelector('.dot3')
 let count = 0
 let width;
 
@@ -137,7 +134,7 @@ const init = () => {
     sliderLine.style.width = width * images.length + 'px'
     images.forEach(item => {
         item.style.width = width + 0.7 + 'px'
-        item.style.height = 'auto'
+        item.style.height = '535px'
     })
     moveSlider()
 }

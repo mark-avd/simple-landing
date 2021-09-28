@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-@import 'crousel';
 
 * {
     margin: 0;
@@ -64,6 +63,12 @@ h3 {
 
 .header__links {
     margin-right: 144px;
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        padding: 17px 0;
+    }
 }
 
 @media screen and (max-width: 850px){
@@ -148,6 +153,26 @@ h3 {
     bottom: -55px;
 }
 
+.vector__main--ms {
+    right: 3px;
+    bottom: 57px;
+}
+
+.vector__main--mm {
+    right: 7px;
+    bottom: -10px;
+}
+
+.vector__form--mm {
+    top: 0;
+    right: 22px;
+}
+
+.vector__form--ms {
+    top: 45px;
+    right: 73px;
+}
+
 @media screen and (min-width: 500px){
     #main {
         border-radius: 220px 0;
@@ -161,6 +186,21 @@ h3 {
         margin: 100px 0 100px 64px;
     }
 
+    .vector__main--ms {
+        display: none;
+    }
+
+    .vector__main--mm {
+        display: none;
+    }
+
+    .vector__form--ms {
+        display: none;
+    }
+
+    .vector__form--mm {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -194,10 +234,20 @@ h3 {
 
     .info__main {
         margin-bottom: 32px;
+        p {
+            display: flex;
+            flex-direction: column;
+            margin-right: 39px;
+        }
+
         p, span {
             font-size: 14px;
             line-height: 18px;
         }
+    }
+
+    .info__details {
+        display: flex;
     }
 
     .info__container {

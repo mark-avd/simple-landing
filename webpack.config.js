@@ -5,6 +5,7 @@ const { ProgressPlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const devMode = process.env.NODE_ENV === 'development'
 
@@ -27,8 +28,10 @@ module.exports = {
         splitChunks: {
             chunks: 'all'
         },
+        minimize: !devMode,
         minimizer: [
-            new CssMinimizerPlugin()
+            new CssMinimizerPlugin(),
+            new TerserPlugin()
         ]
     },
     devtool: devMode && 'source-map',

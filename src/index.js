@@ -8,35 +8,30 @@ const fileInput = document.querySelector('.fileInput')
 const fileDetails = document.querySelector('.filePreview__details')
 const fileThumbnail = document.querySelector('.filePreview__thumbnail')
 const addButton = document.querySelector('.btn--add')
-const trashBin = document.querySelector('.filePreview__bin')
+const delButton = document.querySelector('.filePreview__bin')
 
-dropContainer.addEventListener('dragenter', dndHandler)
-dropContainer.addEventListener('dragover', dndHandler)
-dropContainer.addEventListener('drop', dndHandler)
-
-function dndHandler(e) {
-    if (e.type === 'drop') {
-        fileInput.files = e.dataTransfer.files
-        createFilePreview(e)
-    }
-    e.preventDefault()
-}
-
-fileInput.onchange = (e) => {
-    createFilePreview(e)
-}
-
-addButton.onclick = (e) => {
+dropContainer.addEventListener('dragenter', (e) => dndHandler(e))
+dropContainer.addEventListener('dragover', (e) => dndHandler(e))
+dropContainer.addEventListener('drop', (e) => dndHandler(e))
+fileInput.addEventListener('change', (e) => createFilePreview(e))
+addButton.addEventListener('click', (e) => {
     fileInput.click()
     e.preventDefault()
-}
-
-trashBin.onclick = () => {
+})
+delButton.addEventListener('click', () => {
     fileInput.value = ''
     fileThumbnail.src = ''
     filePreview.classList.toggle('hide')
     isValidated = false
     sendButton.disabled = true
+})
+
+const dndHandler = (e) => {
+    if (e.type === 'drop') {
+        fileInput.files = e.dataTransfer.files
+        createFilePreview(e)
+    }
+    e.preventDefault()
 }
 
 const createFilePreview = (e) => {
@@ -50,7 +45,6 @@ const createFilePreview = (e) => {
     if (justName.length > 15) {
         justName = justName.substring(0, 16) + '...'
     }
-
     fileThumbnail.src = URL.createObjectURL(obj)
     fileName.innerHTML = justName
     fileDetails.innerHTML = fileExtension + ' ' + formattedSize
@@ -142,12 +136,60 @@ window.addEventListener('keypress', (event) => {
 
 const images = document.querySelectorAll('.slider__wrapper .slider__line .slide')
 const sliderLine = document.querySelector('.slider__line')
+const dots = document.querySelectorAll('.slider__dot')
+
 let count = 0
 let width;
+
+const setActiveDot = () => {
+    dots.forEach(dot => dot.classList.remove('dot--active'))
+    dots[count].classList.add('dot--active')
+}
 
 const moveSlider = () => {
     sliderLine.style.transform = 'translate(-' + count * width + 'px)'
 }
+
+const setSlider = (e) => {
+    if (e.target.classList.contains('dot1')) {
+        sliderLine.style.transform = 'translate(0)'
+        count = 0
+    }
+    if (e.target.classList.contains('dot2')) {
+        sliderLine.style.transform = 'translate(-'+ 100 * (1 / 3) + '%)'
+        count = 1
+    }
+    if (e.target.classList.contains('dot3')) {
+        sliderLine.style.transform = 'translate(-' + 100 * (2 / 3) + '%)'
+        count = 2
+    }
+    setActiveDot()
+}
+
+const switchSlide = (e) => {
+    console.log(e.target)
+    if (e.target.classList.contains('prev')) {
+        count--
+        if (count < 0) {
+            count = images.length - 1
+        }
+    }
+    if (e.target.classList.contains('next')) {
+        count++
+        if (count >= images.length) {
+            count = 0
+        }
+    }
+    moveSlider()
+    setActiveDot()
+}
+
+sliderLine.addEventListener('click', setActiveDot)
+dots[0].addEventListener('click', setSlider)
+dots[1].addEventListener('click', setSlider)
+dots[2].addEventListener('click', setSlider)
+document.querySelector('.slider--prev').addEventListener('click', switchSlide)
+document.querySelector('.slider--next').addEventListener('click', switchSlide)
 
 const init = () => {
     width = document.querySelector('.slider__wrapper').offsetWidth
@@ -157,23 +199,8 @@ const init = () => {
         item.style.height = '535px'
     })
     moveSlider()
+    setActiveDot()
 }
-
-document.querySelector('.slider--prev').addEventListener('click', () => {
-    count--
-    if (count < 0) {
-        count = images.length - 1
-    }
-    moveSlider()
-})
-
-document.querySelector('.slider--next').addEventListener('click', () => {
-    count++
-    if (count >= images.length) {
-        count = 0
-    }
-    moveSlider()
-})
 
 window.addEventListener('resize', init)
 init()

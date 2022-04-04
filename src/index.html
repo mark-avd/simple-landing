@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>i-Link Academy</title>
+    <title>Landing</title>
 </head>
 <body>
     <header class="header">
@@ -18,24 +18,31 @@
             <a href="#slider">Slider</a>
         </div>
     </header>
-    <div id="main">
-        <div class="info__photo">
-            <img class="photo" src="assets/person-img.png" alt="Jane Doe Photo"/>
-            <div class="vector vector__main--s"></div>
-            <div class="vector vector__main--m"></div>
-            <div class="vector vector__main--ms"></div>
-            <div class="vector vector__main--mm"></div>
+    <div id="main" class="main">
+        <div class="main__photo">
+            <img class="photo-img" src="assets/person-img.png" alt="Jane Doe Photo"/>
+            <div class="vector main__vector-small"></div>
+            <div class="vector main__vector-medium"></div>
+            <div class="vector main__vector-small-mobile"></div>
+            <div class="vector main__vector-medium-mobile"></div>
         </div>
-        <div class="info__container">
-            <div class="info__main">
+        <div class="main__info">
+            <div class="main__description">
                 <h1>Jane Doe</h1>
-                <div class="info__details">
-                    <p><span>Date of birth</span> 21.04.2001</p>
-                    <p><span>Gender</span> Female</p>
-                    <p><span>Country</span> Korea</p>
+                <div class="main__details">
+                    <p>
+                        <span>Date of birth</span>
+                        21.04.2001
+                    </p><p>
+                        <span>Gender</span>
+                        Female
+                    </p><p>
+                        <span>Country</span>
+                        Korea
+                    </p>
                 </div>
             </div>
-            <div class="info__about">
+            <div class="main__about">
                 <h3>About me</h3>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -50,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div id="form">
+    <div id="form" class="form">
         <form class="form__main" action="#" novalidate>
             <h2>Tell us about yourself</h2>
             <div class="form__fields">
@@ -63,7 +70,7 @@
                                 id="name"
                                 placeholder="Tell us your name"
                         />
-                        <span class="error__message"></span>
+                        <span class="error-message"></span>
                     </label>
                     <label for="gender">
                         Your Gender <br/>
@@ -73,7 +80,7 @@
                             <option value="male">Male</option>
                             <option value="attack-heli">Attack Helicopter</option>
                         </select>
-                        <span class="error__message"></span>
+                        <span class="error-message"></span>
                     </label>
                 </section>
                 <section class="section hide">
@@ -85,7 +92,7 @@
                                 id="country"
                                 placeholder="Where are you from?"
                         />
-                        <span class="error__message"></span>
+                        <span class="error-message"></span>
                     </label>
                     <label for="city">
                         Your City <br/>
@@ -95,24 +102,24 @@
                                 id="city"
                                 placeholder="What town are you from?"
                         />
-                        <span class="error__message"></span>
+                        <span class="error-message"></span>
                     </label>
                     <label for="bDate">
                         Your Date of Birth <br/>
-                        <input name="bDate" type="date" id="bDate" />
-                        <span class="error__message"></span>
+                        <input name="bDate" type="date" id="bDate" value="1940-01-01" />
+                        <span class="error-message"></span>
                     </label>
                 </section>
                 <div class="form__dropzone hide">
                     <span>Proof your identity with some documents</span>
-                    <button class="btn secondary btn--add">Add document</button>
+                    <button class="button button_secondary button_add">Add document</button>
                     <input
                             type="file"
                             class="fileInput"
                             name="file"
                             accept=".jpg, .png, .bmp, .jpeg"
                     />
-                    <div class="error__message"></div>
+                    <div class="error-message"></div>
                 </div>
                 <div class="form__files">
                     <div class="form__filePreview hide">
@@ -132,37 +139,35 @@
                     </div>
                 </div>
             </div>
-            <div class="form__button">
-                <button class="btn btn--send" type="submit" disabled>Send Info</button>
-                <div class="form__completed hide">
+            <div class="form__button-container">
+                <button class="button button_send" type="submit" disabled>Send Info</button>
+                <div class="form__sending-status hide">
                     <span>✔</span>
                     <p>Completed</p>
                 </div>
             </div>
-
         </form>
-        <div class="vector vector__form vector__form--m"></div>
-        <div class="vector vector__form vector__form--s"></div>
-        <div class="vector vector__form vector__form--b"></div>
-        <div class="vector vector__form vector__form--mc"></div>
-        <div class="vector vector__form vector__form--sc"></div>
-        <div class="vector vector__form vector__form--bc"></div>
-        <div class="vector vector__form--mm"></div>
-        <div class="vector vector__form--ms"></div>
+        <div class="vector form__vector form__vector-medium"></div>
+        <div class="vector form__vector form__vector-small"></div>
+        <div class="vector form__vector form__vector-big"></div>
+        <div class="vector form__vector form__vector-medium-colored"></div>
+        <div class="vector form__vector form__vector-small-colored"></div>
+        <div class="vector form__vector form__vector-big-colored"></div>
+        <div class="vector form__vector-medium-mobile"></div>
+        <div class="vector form__vector-small-mobile"></div>
     </div>
-    <div id="slider">
+    <div id="slider" class="slider">
         <div class="slider__wrapper">
             <div class="slider__line">
-
-                <div class="slide slide1"></div>
-                <div class="slide slide2"></div>
-                <div class="slide slide3"></div>
+                <div class="slider__slide slider__slide_first"></div>
+                <div class="slider__slide slider__slide_second"></div>
+                <div class="slider__slide slider__slide_third"></div>
             </div>
-            <span class="slider--prev">
-                <img class="prev" src="assets/graphics/left-arrow.svg" alt="">
+            <span class="slider__switch slider__switch_left">
+                <img src="assets/graphics/left-arrow.svg" alt="left slider switch">
             </span>
-            <span class="slider--next">
-                <img class="next" src="assets/graphics/right-arrow.svg" alt="">
+            <span class="slider__switch slider__switch_right">
+                <img src="assets/graphics/right-arrow.svg" alt="right slider switch">
             </span>
             <div class="slider__controls">
                 <span class="slider__dot dot1"></span>

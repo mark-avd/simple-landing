@@ -1,187 +1,204 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Landing</title>
-</head>
-<body>
-    <header class="header">
-        <div class="header__vectors">
-            <img src="assets/graphics/vector-left.svg" alt="background rectangle"/>
-            <img src="assets/graphics/vector-right.svg" alt="background rectangle"/>
-        </div>
-        <div class="header__links">
-            <a href="#main">Jane Doe</a>
-            <a href="#form">Tell us about yourself</a>
-            <a href="#slider">Slider</a>
-        </div>
-    </header>
-    <div id="main" class="main">
-        <div class="main__photo">
-            <img class="photo-img" src="assets/person-img.png" alt="Jane Doe Photo"/>
-            <div class="vector main__vector-small"></div>
-            <div class="vector main__vector-medium"></div>
-            <div class="vector main__vector-small-mobile"></div>
-            <div class="vector main__vector-medium-mobile"></div>
-        </div>
-        <div class="main__info">
-            <div class="main__description">
-                <h1>Jane Doe</h1>
-                <div class="main__details">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <title>Landing</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header__vectors">
+                <img src="assets/graphics/vector-left.svg" alt="background rectangle" />
+                <img src="assets/graphics/vector-right.svg" alt="background rectangle" />
+            </div>
+            <nav class="header__links">
+                <a href="#main">Jane Doe</a>
+                <a href="#form">Tell us about yourself</a>
+                <a href="#slider">Slider</a>
+            </nav>
+        </header>
+        <section id="main" class="main">
+            <div class="main__photo">
+                <img class="photo-img" src="assets/person-img.png" alt="Jane Doe Photo" />
+                <div class="vector main__vector-small"></div>
+                <div class="vector main__vector-medium"></div>
+                <div class="vector main__vector-small-mobile"></div>
+                <div class="vector main__vector-medium-mobile"></div>
+            </div>
+            <div class="main__info">
+                <div class="main__description">
+                    <h1>Jane Doe</h1>
+                    <div class="main__details">
+                        <p>
+                            <span>Date of birth</span>
+                            21.04.2001
+                        </p>
+                        <p>
+                            <span>Gender</span>
+                            Female
+                        </p>
+                        <p>
+                            <span>Country</span>
+                            Korea
+                        </p>
+                    </div>
+                </div>
+                <div class="main__about">
+                    <h3>About me</h3>
                     <p>
-                        <span>Date of birth</span>
-                        21.04.2001
-                    </p><p>
-                        <span>Gender</span>
-                        Female
-                    </p><p>
-                        <span>Country</span>
-                        Korea
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.<br />
+                        <br />
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                 </div>
             </div>
-            <div class="main__about">
-                <h3>About me</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br/>
-                    <br/>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div id="form" class="form">
-        <form class="form__main" action="#" novalidate>
-            <h2>Tell us about yourself</h2>
-            <div class="form__fields">
-                <section>
-                    <label for="name">
-                        Your Name <br/>
-                        <input
+        </section>
+        <section id="form" class="form">
+            <form class="form__main" action="#" novalidate>
+                <h2>Tell us about yourself</h2>
+                <div class="form__fields">
+                    <div class="form__section-one">
+                        <label for="name">
+                            Your Name <br />
+                            <input
+                                class="form__input"
                                 name="name"
                                 type="text"
                                 id="name"
                                 placeholder="Tell us your name"
-                        />
-                        <span class="error-message"></span>
-                    </label>
-                    <label for="gender">
-                        Your Gender <br/>
-                        <select name="gender" id="gender">
-                            <option value="default" selected disabled>Chose your gender</option>
-                            <option value="female">Female</option>
-                            <option value="male">Male</option>
-                            <option value="attack-heli">Attack Helicopter</option>
-                        </select>
-                        <span class="error-message"></span>
-                    </label>
-                </section>
-                <section class="section hide">
-                    <label for="country">
-                        Your Country <br/>
-                        <input
+                            />
+                            <span class="form__error-message"></span>
+                        </label>
+                        <label for="gender">
+                            Your Gender <br />
+                            <select class="form__input" name="gender" id="gender">
+                                <option value="default" selected disabled>Chose your gender</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="attack-heli">Attack Helicopter</option>
+                            </select>
+                            <span class="form__error-message"></span>
+                        </label>
+                    </div>
+                    <div class="form__section-two">
+                        <label for="country">
+                            Your Country <br />
+                            <input
+                                class="form__input"
                                 name="country"
                                 type="text"
                                 id="country"
                                 placeholder="Where are you from?"
-                        />
-                        <span class="error-message"></span>
-                    </label>
-                    <label for="city">
-                        Your City <br/>
-                        <input
+                            />
+                            <span class="form__error-message"></span>
+                        </label>
+                        <label for="city">
+                            Your City <br />
+                            <input
+                                class="form__input"
                                 name="city"
                                 type="text"
                                 id="city"
                                 placeholder="What town are you from?"
-                        />
-                        <span class="error-message"></span>
-                    </label>
-                    <label for="bDate">
-                        Your Date of Birth <br/>
-                        <input name="bDate" type="date" id="bDate" value="1940-01-01" />
-                        <span class="error-message"></span>
-                    </label>
-                </section>
-                <div class="form__dropzone hide">
-                    <span>Proof your identity with some documents</span>
-                    <button class="button button_secondary button_add">Add document</button>
-                    <input
+                            />
+                            <span class="form__error-message"></span>
+                        </label>
+                        <label for="bDate">
+                            Your Date of Birth <br />
+                            <input
+                                class="form__input"
+                                name="bDate"
+                                type="date"
+                                id="bDate"
+                                value="1940-01-01"
+                            />
+                            <span class="form__error-message"></span>
+                        </label>
+                    </div>
+                    <div class="form__dropzone form__section-three">
+                        <span>Proof your identity with some documents</span>
+                        <button class="button button_secondary button_add">Add document</button>
+                        <input
                             type="file"
-                            class="fileInput"
+                            class="file-input"
                             name="file"
                             accept=".jpg, .png, .bmp, .jpeg"
-                    />
-                    <div class="error-message"></div>
-                </div>
-                <div class="form__files">
-                    <div class="form__filePreview hide">
-                        <div class="filePreview__container">
-                            <img
-                                    class="filePreview__thumbnail"
+                        />
+                        <div class="form__error-message"></div>
+                    </div>
+                    <div class="form__files">
+                        <div class="file-preview">
+                            <div class="file-preview__container">
+                                <img
+                                    class="file-preview__thumbnail"
                                     src="assets/person-img.png"
                                     alt="file thumbnail"
-                            />
-                            <div class="filePreview__info">
-                                <span class="filePreview__name"></span>
-                                <br/>
-                                <span class="filePreview__details"></span>
+                                />
+                                <div class="file-preview__info">
+                                    <span class="file-preview__name"></span>
+                                    <br />
+                                    <span class="file-preview__details"></span>
+                                </div>
                             </div>
+                            <img
+                                class="file-preview__bin"
+                                src="assets/graphics/bin.svg"
+                                alt="bin icon"
+                            />
                         </div>
-                        <img class="filePreview__bin" src="assets/graphics/bin.svg" alt="bin icon"/>
                     </div>
                 </div>
-            </div>
-            <div class="form__button-container">
-                <button class="button button_send" type="submit" disabled>Send Info</button>
-                <div class="form__sending-status hide">
-                    <span>✔</span>
-                    <p>Completed</p>
+                <div class="form__button-container">
+                    <button class="button button_send" type="submit" disabled>Send Info</button>
+                    <div class="form__sending-status">
+                        <span>✔</span>
+                        <p>Completed</p>
+                    </div>
+                </div>
+            </form>
+            <div class="vector form__vector form__vector-medium"></div>
+            <div class="vector form__vector form__vector-small"></div>
+            <div class="vector form__vector form__vector-big"></div>
+            <div class="vector form__vector form__vector-medium-colored"></div>
+            <div class="vector form__vector form__vector-small-colored"></div>
+            <div class="vector form__vector form__vector-big-colored"></div>
+            <div class="vector form__vector-medium-mobile"></div>
+            <div class="vector form__vector-small-mobile"></div>
+        </section>
+        <section id="slider" class="slider">
+            <div class="slider__wrapper">
+                <div class="slider__line">
+                    <div class="slider__slide slider__slide_first"></div>
+                    <div class="slider__slide slider__slide_second"></div>
+                    <div class="slider__slide slider__slide_third"></div>
+                </div>
+                <span class="slider__switch slider__switch_left">
+                    <img src="assets/graphics/left-arrow.svg" alt="left slider switch" />
+                </span>
+                <span class="slider__switch slider__switch_right">
+                    <img src="assets/graphics/right-arrow.svg" alt="right slider switch" />
+                </span>
+                <div class="slider__controls">
+                    <span class="slider__dot dot1"></span>
+                    <span class="slider__dot dot2"></span>
+                    <span class="slider__dot dot3"></span>
+                </div>
+                <div class="slider__text">
+                    <h1>Slide this photo</h1>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                        eu fugiat nulla pariatur
+                    </p>
                 </div>
             </div>
-        </form>
-        <div class="vector form__vector form__vector-medium"></div>
-        <div class="vector form__vector form__vector-small"></div>
-        <div class="vector form__vector form__vector-big"></div>
-        <div class="vector form__vector form__vector-medium-colored"></div>
-        <div class="vector form__vector form__vector-small-colored"></div>
-        <div class="vector form__vector form__vector-big-colored"></div>
-        <div class="vector form__vector-medium-mobile"></div>
-        <div class="vector form__vector-small-mobile"></div>
-    </div>
-    <div id="slider" class="slider">
-        <div class="slider__wrapper">
-            <div class="slider__line">
-                <div class="slider__slide slider__slide_first"></div>
-                <div class="slider__slide slider__slide_second"></div>
-                <div class="slider__slide slider__slide_third"></div>
-            </div>
-            <span class="slider__switch slider__switch_left">
-                <img src="assets/graphics/left-arrow.svg" alt="left slider switch">
-            </span>
-            <span class="slider__switch slider__switch_right">
-                <img src="assets/graphics/right-arrow.svg" alt="right slider switch">
-            </span>
-            <div class="slider__controls">
-                <span class="slider__dot dot1"></span>
-                <span class="slider__dot dot2"></span>
-                <span class="slider__dot dot3"></span>
-            </div>
-            <div class="slider__text">
-                <h1>Slide this photo</h1>
-                <p>
-                    Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
-                </p>
-            </div>
-        </div>
-    </div>
-</body>
+        </section>
+    </body>
 </html>

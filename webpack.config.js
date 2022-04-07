@@ -1,58 +1,60 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { ProgressPlugin } = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { ProgressPlugin } = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const devMode = process.env.NODE_ENV === 'development'
 
-const filename = ext => devMode ? `[name].${ext}` : `[name].[contenthash].${ext}`
+const filename = (ext) => (devMode ? `[name].${ext}` : `[name].[contenthash].${ext}`)
 
 module.exports = {
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
     entry: {
-        main: './index.js'
+        main: './index.js',
     },
     output: {
         filename: filename('js'),
         path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
-        port: 3000
+        port: 3000,
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
         },
         minimize: !devMode,
         minimizer: [
             new CssMinimizerPlugin(),
             new TerserPlugin()
-        ]
+        ],
     },
     devtool: devMode && 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html',
             minify: {
-                collapseWhitespace: !devMode
-            }
+                collapseWhitespace: !devMode,
+            },
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: filename('css')
+            filename: filename('css'),
         }),
-        new CopyWebpackPlugin({'patterns': [
+        new CopyWebpackPlugin({
+            patterns: [
                 {
                     from: path.resolve(__dirname, 'src/assets'),
-                    to: 'assets'
-                }
-            ]}),
-        new ProgressPlugin()
+                    to: 'assets',
+                },
+            ],
+        }),
+        new ProgressPlugin(),
     ],
     module: {
         rules: [
@@ -61,8 +63,9 @@ module.exports = {
                 use: [
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'sass-loader'
-                ]
+                    'sass-loader',
+                    'postcss-loader',
+                ],
             },
             {
                 test: /\.m?js$/,
@@ -70,9 +73,9 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
+                        presets: ['@babel/preset-env'],
+                    },
+                },
             },
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
@@ -80,8 +83,8 @@ module.exports = {
             },
             {
                 test: /\.(ttf|woff|woff2|eot)$/,
-                use: ['file-loader']
-            }
-        ]
-    }
+                use: ['file-loader'],
+            },
+        ],
+    },
 }

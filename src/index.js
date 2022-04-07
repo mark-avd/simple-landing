@@ -1,30 +1,24 @@
+import './slider'
 import './styles.scss'
 
-// FILE INPUT ----------
-
+const formSectionTwo = document.querySelector('.form__section-two')
+const form = document.querySelector('.form__main')
+const formStatus = document.querySelector('.form__sending-status')
 const dropContainer = document.querySelector('.form__dropzone')
-const fileName = document.querySelector('.filePreview__name')
-const fileInput = document.querySelector('.fileInput')
-const fileDetails = document.querySelector('.filePreview__details')
-const fileThumbnail = document.querySelector('.filePreview__thumbnail')
+const filePreview = document.querySelector('.file-preview')
+const fileName = document.querySelector('.file-preview__name')
+const fileDetails = document.querySelector('.file-preview__details')
+const fileThumbnail = document.querySelector('.file-preview__thumbnail')
+const delButton = document.querySelector('.file-preview__bin')
+const fileInput = document.querySelector('.file-input')
 const addButton = document.querySelector('.button_add')
-const delButton = document.querySelector('.filePreview__bin')
+const sendButton = document.querySelector('.button_send')
+const regExp = /^[a-zA-Z\s]*$/
 
 dropContainer.addEventListener('dragenter', (event) => dragDropHandler(event))
 dropContainer.addEventListener('dragover', (event) => dragDropHandler(event))
 dropContainer.addEventListener('drop', (event) => dragDropHandler(event))
 fileInput.addEventListener('change', (event) => createFilePreview(event))
-addButton.addEventListener('click', (event) => {
-    fileInput.click()
-    event.preventDefault()
-})
-delButton.addEventListener('click', () => {
-    fileInput.value = ''
-    fileThumbnail.src = ''
-    filePreview.classList.toggle('hide')
-    validation['file'] = false
-    checkValidationStatus()
-})
 
 const dragDropHandler = (event) => {
     event.preventDefault()
@@ -37,7 +31,7 @@ const dragDropHandler = (event) => {
 }
 
 const createFilePreview = (event) => {
-    const file = (event.type === 'drop') ? event.dataTransfer.files[0] : event.target.files[0]
+    const file = event.type === 'drop' ? event.dataTransfer.files[0] : event.target.files[0]
     const { name, size } = file
     const formattedSize = String(size / 1024 / 1024).slice(0, 3) + ' mb'
     const dotIndex = name.indexOf('.')
@@ -50,19 +44,14 @@ const createFilePreview = (event) => {
     fileThumbnail.src = URL.createObjectURL(file)
     fileName.innerHTML = nameWithoutExtension
     fileDetails.innerHTML = fileExtension + ' ' + formattedSize
-    filePreview.classList.remove('hide')
+    filePreview.classList.add('file-preview_show')
 }
 
-// VALIDATION ----------
-
-const form = document.querySelector('.form__main')
-const section = document.querySelector('.section')
-const dropZone = document.querySelector('.form__dropzone')
-const formFiles = document.querySelector('.form__files')
-const filePreview = document.querySelector('.form__filePreview')
-const sendButton = document.querySelector('.button_send')
-const formSend = document.querySelector('.form__sending-status')
-const regExp = /^[a-zA-Z\s]*$/
+const clearFilePreview = () => {
+    fileInput.value = ''
+    fileThumbnail.src = ''
+    filePreview.classList.remove('file-preview_show')
+}
 
 const validation = {
     name: false,
@@ -70,24 +59,24 @@ const validation = {
     country: false,
     city: false,
     dateOfBirth: false,
-    file: false
+    file: false,
 }
 
 const validateElem = (element) => {
     if (element.name === 'name' || element.name === 'country' || element.name === 'city') {
         if (element.value === '') {
             element.nextElementSibling.textContent = 'The field is required'
-            element.classList.add('input_error')
+            element.classList.add('form__input_error')
             validation[`${element.name}`] = false
         }
         if (!regExp.test(element.value)) {
             element.nextElementSibling.textContent = 'Only latin letters and spaces are allowed'
-            element.classList.add('input_error')
+            element.classList.add('form__input_error')
             validation[`${element.name}`] = false
         }
         if (element.value !== '' && regExp.test(element.value)) {
             element.nextElementSibling.textContent = ''
-            element.classList.remove('input_error')
+            element.classList.remove('form__input_error')
             validation[`${element.name}`] = true
         }
     }
@@ -101,17 +90,17 @@ const validateElem = (element) => {
     if (element.name === 'bDate') {
         if (Date.parse(element.value) < Date.parse('1940-01-01')) {
             element.nextElementSibling.textContent = 'Enter correct date of birth'
-            element.classList.add('input_error')
+            element.classList.add('form__input_error')
             validation['dateOfBirth'] = false
         }
         if (Date.parse(element.value) > Date.parse('1940-01-01')) {
             element.nextElementSibling.textContent = ''
-            element.classList.remove('input_error')
+            element.classList.remove('form__input_error')
             validation['dateOfBirth'] = true
         }
         if (Date.parse(element.value) > Date.parse('2008-01-01')) {
             element.nextElementSibling.textContent = 'Enter correct date of birth'
-            element.classList.add('input_error')
+            element.classList.add('form__input_error')
             validation['dateOfBirth'] = false
         }
     }
@@ -122,7 +111,9 @@ const validateElem = (element) => {
 }
 
 const checkValidationStatus = () => {
-    const status = Object.values(validation).reduce((prevValue, currentValue) => prevValue + currentValue)
+    const status = Object.values(validation).reduce(
+        (prevValue, currentValue) => prevValue + currentValue
+    )
     if (status >= 6) {
         sendButton.disabled = false
     }
@@ -135,18 +126,18 @@ const showSection = (element) => {
     validateElem(element)
     checkValidationStatus()
     if (validation.name && validation.gender) {
-        section.classList.remove('hide')
+        formSectionTwo.classList.add('form__section-two_show')
         if (validation.dateOfBirth && validation.city && validation.country) {
-            dropZone.classList.remove('hide')
+            dropContainer.classList.add('form__section-three_show')
         }
     }
 }
 
 const submit = () => {
     form.reset()
-    formFiles.removeChild(filePreview)
+    clearFilePreview()
     sendButton.disabled = true
-    formSend.classList.remove('hide')
+    formStatus.classList.add('form__sending-status_show')
 }
 
 for (let element of form.elements) {
@@ -155,89 +146,24 @@ for (let element of form.elements) {
     }
 }
 
+addButton.addEventListener('click', (event) => {
+    fileInput.click()
+    event.preventDefault()
+})
+
+delButton.addEventListener('click', () => {
+    validation['file'] = false
+    clearFilePreview()
+    checkValidationStatus()
+})
+
 form.addEventListener('submit', (event) => {
     event.preventDefault()
     submit()
 })
 
 window.addEventListener('keypress', (event) => {
-    if(event.key === 'Enter') {
+    if (event.key === 'Enter') {
         event.preventDefault()
     }
 })
-
-// SLIDER --------------
-
-const images = document.querySelectorAll('.slider__wrapper .slider__line .slider__slide')
-const sliderLine = document.querySelector('.slider__line')
-const dots = document.querySelectorAll('.slider__dot')
-
-let count = 0
-let width;
-
-const setActiveDot = () => {
-    dots.forEach(dot => dot.classList.remove('slider__dot_active'))
-    dots[count].classList.add('slider__dot_active')
-}
-
-const moveSlider = () => {
-    sliderLine.style.transform = 'translate(-' + count * width + 'px)'
-}
-
-const setSlider = (event) => {
-    if (event.target.classList.contains('dot1')) {
-        sliderLine.style.transform = 'translate(0)'
-        count = 0
-    }
-    if (event.target.classList.contains('dot2')) {
-        sliderLine.style.transform = 'translate(-'+ 100 * (1 / 3) + '%)'
-        count = 1
-    }
-    if (event.target.classList.contains('dot3')) {
-        sliderLine.style.transform = 'translate(-' + 100 * (2 / 3) + '%)'
-        count = 2
-    }
-    setActiveDot()
-}
-
-const switchSlide = (event, type) => {
-    if (type === 'prev') {
-        count--
-        if (count < 0) {
-            count = images.length - 1
-        }
-    }
-    if (type === 'next') {
-        count++
-        if (count >= images.length) {
-            count = 0
-        }
-    }
-    moveSlider()
-    setActiveDot()
-}
-
-sliderLine.addEventListener('click', setActiveDot)
-dots[0].addEventListener('click', setSlider)
-dots[1].addEventListener('click', setSlider)
-dots[2].addEventListener('click', setSlider)
-document.querySelector('.slider__switch_left').addEventListener('click', (event) => {
-    switchSlide(event, 'prev')
-})
-document.querySelector('.slider__switch_right').addEventListener('click', (event) => {
-    switchSlide(event, 'next')
-})
-
-const init = () => {
-    width = document.querySelector('.slider__wrapper').offsetWidth
-    sliderLine.style.width = width * images.length + 'px'
-    images.forEach(item => {
-        item.style.width = width + 'px'
-        item.style.height = '535px'
-    })
-    moveSlider()
-    setActiveDot()
-}
-
-window.addEventListener('resize', init)
-init()

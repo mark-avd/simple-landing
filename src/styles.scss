@@ -11,7 +11,6 @@ body {
     color: #303030;
     background-color: #f8f3ff;
     font-family: Montserrat, sans-serif;
-    overflow-x: hidden;
 }
 
 h1 {
@@ -262,18 +261,11 @@ h3 {
 
 .form {
     position: relative;
+    overflow: hidden;
+    margin-top: 56px;
 
-    h2 {
-        margin: 56px 0 20px;
-    }
-
-    label {
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 19px;
-        display: inline-block;
-        margin: 20px 32px 20px 0;
-        position: relative;
+    &__header {
+        margin: 0 20px;
     }
 
     &__main {
@@ -303,6 +295,15 @@ h3 {
             background-color: #fff5f5;
             border: 1px solid #ed4376;
         }
+    }
+
+    &__input-label {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        display: inline-block;
+        margin: 20px 32px 20px 0;
+        position: relative;
     }
 
     &__error-message {
@@ -418,7 +419,7 @@ h3 {
         }
 
         &-medium-colored {
-            top: -2px;
+            top: 12px;
             right: -30px;
             width: 168px;
             height: 168px;
@@ -663,24 +664,20 @@ h3 {
 
 .slider {
     background-color: #fff;
+    border-radius: 220px 0;
+    padding: 56px 0;
 
     &__wrapper {
+        border-radius: 32px;
         position: relative;
         margin: auto;
-        padding: 56px 0;
         max-width: 90%;
         overflow: hidden;
-        border-radius: 32px;
     }
 
     &__line {
-        border-radius: 32px;
         display: flex;
         transition: all ease 1s;
-
-        img {
-            background: linear-gradient(0deg, rgb(0 0 0 / 20%), rgb(0 0 0 / 20%));
-        }
     }
 
     &__switch {
@@ -701,7 +698,7 @@ h3 {
 
     &__controls {
         position: absolute;
-        bottom: 60px;
+        bottom: 30px;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -710,11 +707,11 @@ h3 {
         width: 12px;
         height: 12px;
         border: 2px solid #fff;
-        color: white;
+        color: #fff;
         cursor: pointer;
+        display: inline-block;
         margin: 0 6px;
         border-radius: 50%;
-        display: inline-block;
         transition: background-color 0.6s ease;
 
         &_active {
@@ -738,9 +735,9 @@ h3 {
 
     &__slide {
         background-size: cover;
+        border-radius: 32px;
         height: 535px;
         width: 100%;
-        border-radius: 32px;
 
         &_first {
             background-image: url('assets/slider-img-1.png');

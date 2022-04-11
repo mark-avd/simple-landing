@@ -262,7 +262,7 @@ h3 {
 .form {
     position: relative;
     overflow: hidden;
-    margin-top: 56px;
+    padding-top: 56px;
 
     &__header {
         margin: 0 20px;
@@ -341,9 +341,12 @@ h3 {
     &__section-two,
     &__section-three {
         visibility: hidden;
+        opacity: 0;
+        transition: opacity cubic-bezier(0.4, 0, 1, 1) 250ms;
 
         &_show {
             visibility: visible;
+            opacity: 1;
         }
     }
 
@@ -391,7 +394,7 @@ h3 {
         z-index: -1;
 
         &-medium {
-            top: 30px;
+            top: 86px;
             left: -30px;
             width: 168px;
             height: 168px;
@@ -400,7 +403,7 @@ h3 {
         }
 
         &-small {
-            top: 145px;
+            top: 191px;
             left: 193px;
             height: 116px;
             width: 116px;
@@ -410,7 +413,7 @@ h3 {
         }
 
         &-big {
-            top: 310px;
+            top: 366px;
             left: -50px;
             width: 293px;
             height: 293px;
@@ -419,7 +422,7 @@ h3 {
         }
 
         &-medium-colored {
-            top: 12px;
+            top: 68px;
             right: -30px;
             width: 168px;
             height: 168px;
@@ -428,7 +431,7 @@ h3 {
         }
 
         &-small-colored {
-            top: 120px;
+            top: 176px;
             right: 195px;
             width: 116px;
             height: 116px;
@@ -438,7 +441,7 @@ h3 {
         }
 
         &-big-colored {
-            top: 290px;
+            top: 346px;
             right: -50px;
             width: 293px;
             height: 293px;
@@ -447,7 +450,7 @@ h3 {
         }
 
         &-medium-mobile {
-            top: 0;
+            top: 56px;
             right: 22px;
             width: 56px;
             height: 56px;
@@ -458,7 +461,7 @@ h3 {
         }
 
         &-small-mobile {
-            top: 50px;
+            top: 106px;
             right: 80px;
             height: 32px;
             width: 32px;
@@ -603,13 +606,9 @@ h3 {
 
 @media screen and (max-width: 500px) {
     .form {
-        h2 {
-            margin: 40px 0;
+        &__header {
+            margin-bottom: 20px;
             width: 70%;
-        }
-
-        label {
-            margin: 20px 0;
         }
 
         &__main {
@@ -624,6 +623,10 @@ h3 {
 
         &__input {
             width: 100%;
+        }
+
+        &__input-label {
+            margin: 20px 0;
         }
 
         &__dropzone {
@@ -664,7 +667,6 @@ h3 {
 
 .slider {
     background-color: #fff;
-    border-radius: 220px 0;
     padding: 56px 0;
 
     &__wrapper {
@@ -750,5 +752,12 @@ h3 {
         &_third {
             background-image: url('assets/slider-img-3.png');
         }
+    }
+    @media screen and (max-width: 500px) {
+        padding: 28px 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+        border-radius: 220px 0;
     }
 }
